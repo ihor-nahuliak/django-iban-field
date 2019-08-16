@@ -9,3 +9,10 @@ Given an IBAN like "GR96 0810 0010 0000 0123 4567 890",
 the value is displayed as "---7890".
 
 Superusers are able to see the full value when needed.
+
+### Assumptions
+* we talk about django model field, not about django form field
+* we use global request object to check if current user is superuser,
+  be careful with that!
+* django admin panel needs additional form field behaviour describing
+  (because the hidden value can't be simply shown in django admin edit view)
