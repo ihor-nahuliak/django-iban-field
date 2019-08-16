@@ -13,8 +13,13 @@ FIXTURE_DIRS = (
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django_global_request',
     'localflavor',
     'django_iban_field',
+)
+
+MIDDLEWARE = (
+    'django_global_request.middleware.GlobalRequestMiddleware',
 )
 
 DATABASES = {

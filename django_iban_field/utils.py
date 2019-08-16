@@ -1,12 +1,7 @@
-from threading import local
 from collections import UserString
 
 from django.contrib.auth.models import AnonymousUser
-
-
-def get_request():
-    """Take an access to the global request instance."""
-    return getattr(local(), 'request', None)
+from django_global_request.middleware import get_request
 
 
 def get_user():
