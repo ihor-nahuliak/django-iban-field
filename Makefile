@@ -53,7 +53,7 @@ install: install-env-python env-activate install-python-libs
 
 
 test-flake8:
-	@$(FLAKE8) django_iban_field ;\
+	@$(FLAKE8) --config="$(DIR)/.flake8rc" django_iban_field ;\
 	if [ $$? -eq 0 ]; then \
 		echo -e "Flake8: ${STATUS_OK}" ;\
 	else \

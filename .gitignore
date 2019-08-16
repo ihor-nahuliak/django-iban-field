@@ -3,6 +3,7 @@
 
 # Configs
 !.gitignore
+!.flake8rc
 !.coveragerc
 !.coveralls.yml
 !.travis.yml
