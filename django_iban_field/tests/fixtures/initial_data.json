@@ -1,0 +1,16 @@
+[
+  {
+    "model": "django_iban_field.TestModel",
+    "pk": 1,
+    "fields": {
+      "iban": null
+    }
+  },
+  {
+    "model": "django_iban_field.TestModel",
+    "pk": 2,
+    "fields": {
+      "iban": "GR96 0810 0010 0000 0123 4567 890"
+    }
+  }
+]

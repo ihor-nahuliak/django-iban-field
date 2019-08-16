@@ -37,6 +37,7 @@ __python_requires__ = [
 ]
 __install_requires__ = [
     'django>=2.2.4',
+    'django-localflavor>=2.2',
 ]
 __extras_requires__ = {
     'dev': [

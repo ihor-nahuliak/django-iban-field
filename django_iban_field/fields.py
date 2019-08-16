@@ -1,20 +1,18 @@
-from django.db import models
-from django.utils.translation import gettext_lazy as _
+from localflavor.generic import models
 
-from django_iban_field.utils import get_user
+from django_iban_field.utils import IBANHiddenValue
 
 
-class IBANField(models.CharField):
-    default_validators = []
-    description = _('International Bank Account Number')
+class IBANField(models.IBANField):
+    """
+    International Bank Account Number format support.
+        1. The stored value is never fully visible,
+           given an IBAN like "GR96 0810 0010 0000 0123 4567 890",
+           the is displayed as "---7890" everywhere
+        2. Superusers are able to see the full value when needed.
+    """
 
-    def __init__(self, *args, **kwargs):
-        kwargs.setdefault('max_length', 34)
-        super().__init__(*args, **kwargs)
-
-    def from_db_value(self, value, expression, connection):
+    def from_db_value(self, value, *args, **kwargs):
         if value is None:
             return value
-        if not get_user().is_superuser:
-            value = '---%s' % value.replace(' ', '')[-4:]
-        return value
+        return IBANHiddenValue(value)
