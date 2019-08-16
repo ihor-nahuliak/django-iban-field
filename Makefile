@@ -61,7 +61,7 @@ test-flake8:
 	fi;
 
 test-django:
-	@$(COVERAGE) run --source=django_iban_field "$(DIR)/manage.py" test ;\
+	@$(COVERAGE) run --rcfile=RCFILE "$(DIR)/.coveragerc" --source=django_iban_field "$(DIR)/manage.py" test ;\
 	if [ $$? -eq 0 ]; then \
 		echo -e "Tested: ${STATUS_OK}" ;\
 	else \

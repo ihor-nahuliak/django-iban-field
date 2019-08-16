@@ -32,7 +32,7 @@ class TestCase(django.test.TestCase):
         self.m_user.is_superuser = False
         m = self.TestModel.objects.get(id=2)
 
-        self.assertEqual('---7890', m.iban)
+        self.assertEqual('**** **** **** **** **** ***7 890', str(m.iban))
         self.assertIsNone(m.iban.full_value)
 
     def test_admin_user_see_none_value(self):
@@ -45,7 +45,7 @@ class TestCase(django.test.TestCase):
         self.m_user.is_superuser = True
         m = self.TestModel.objects.get(id=2)
 
-        self.assertEqual('---7890', m.iban)
+        self.assertEqual('**** **** **** **** **** ***7 890', str(m.iban))
         self.assertEqual('GR96 0810 0010 0000 0123 4567 890',
                          m.iban.full_value)
 
