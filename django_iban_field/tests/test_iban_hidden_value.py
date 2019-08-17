@@ -24,7 +24,7 @@ class TestCase(django.test.TestCase):
         self.m_user.is_superuser = False
         value = self.IBANHiddenValue(None)
 
-        self.assertEqual('', value)
+        self.assertEqual('None', value)
         self.assertIsNone(value.full_value)
 
     def test_not_admin_user_see_the_hidden_string(self):
@@ -38,7 +38,7 @@ class TestCase(django.test.TestCase):
         self.m_user.is_superuser = True
         value = self.IBANHiddenValue(None)
 
-        self.assertEqual('', value)
+        self.assertEqual('None', value)
         self.assertIsNone(value.full_value)
 
     def test_admin_user_see_the_full_string(self):

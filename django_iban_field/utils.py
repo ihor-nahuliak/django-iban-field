@@ -12,7 +12,7 @@ def get_user():
     return request.user
 
 
-class IBANHiddenValue(UserString):
+class IBANHiddenValue(UserString, str):
     """The class that implements access to the full viewed IBAN value.
     For non superuser users it's shown just cut IBAN version.
 
@@ -27,14 +27,14 @@ class IBANHiddenValue(UserString):
     _full_value = None
 
     def __init__(self, value):
+        if isinstance(value, self.__class__):
+            value = value.full_value
+        super().__init__(value)
         if value:
             value = value.replace(' ', '')
-            data = '---%s' % value[-4:]
+            self.data = '---%s' % value[-4:]
             if get_user().is_superuser:
                 self._full_value = self._format(value)
-        else:
-            data = ''
-        super().__init__(data)
 
     @classmethod
     def _format(cls, value):
