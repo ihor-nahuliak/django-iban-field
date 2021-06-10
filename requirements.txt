@@ -1,4 +1,4 @@
-django==2.2.4
+django==2.2.24
 django-localflavor==2.2
 django-middleware-global-request==0.1.2
 flake8==3.7.8
